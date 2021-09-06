@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import Device from "./components/Device";
+import Observation from "./components/Observation";
+import Patient from "./components/Patient";
+import Practitioner from "./components/Practitioner";
+import LogInForm from "./components/Form";
+require('dotenv').config();
+
 
 function App() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [message, setMessage] = useState("empty")
   const [data, setData] = useState("null");
-  const [patientData, setPatientData] = useState("null");
+  
 
   const onTitleChange = (e:any) => setTitle(e.target.value);
   const onBodyChange = (e:any) => setBody(e.target.value);
@@ -19,7 +26,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     };
-    const response = await fetch("http://172.20.10.3:3003/initData", requestOptions)
+    const response = await fetch("http://192.168.178.33:3003/initData", requestOptions)
     const json = await response.json();
     setMessage(JSON.stringify(json));
     console.log(json);
@@ -30,21 +37,12 @@ function App() {
         method: "GET"
       };
       // GET request using fetch with async/await
-      const response:any = await fetch('http://172.20.10.3:3003/initData',requestOptionsGet);
+      const response:any = await fetch('http://192.168.178.33:3003/initData',requestOptionsGet);
       const json = await response.json();
       setData(JSON.stringify(json));
   }
 
-  const getPatientData = async(e:any) => {
-      const requestOptionsGet = {
-        method: "GET"
-      };
-      // GET request using fetch with async/await
-      const response:any = await fetch('http://172.20.10.3:3003/getPatient',requestOptionsGet);
-      const json = await response.json();
-      console.log(JSON.stringify(json));
-      setPatientData(JSON.stringify(json));
-  }
+
   
 
   return (
@@ -65,12 +63,13 @@ function App() {
             getData
           </button>
           <p>{data}</p>
-          <h2>pull PatientData</h2>
-          <button type="submit" onClick={getPatientData}>
-            getData
-          </button>
-          <p>{patientData}</p>
         </form>
+
+        <Device/>
+        <Observation/>
+        <Patient/>
+        <Practitioner/>
+        <LogInForm/>
       </div>
   );
 }
