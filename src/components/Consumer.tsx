@@ -38,6 +38,12 @@ function Consumer() {
       return alert("thanks for clickin");
     }
 
+    var modalElemnt = (<div>
+      <li>a</li>
+      <li>b</li>
+      <li>c</li>
+    </div>)
+
     {consumerData.map((element) => {<li>{element[0]}</li>})}
     
     const Test = (<div className="consumerHead"> {consumerData.map(station => (
@@ -45,7 +51,7 @@ function Consumer() {
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
-        <Modal data={"Hier steht was."}/>
+        <Modal data={modalElemnt}/>
         {/* <button className="consumerButton"  onClick={() => display() }>clickME</button> */}
       </div>
     ))} </div>)
