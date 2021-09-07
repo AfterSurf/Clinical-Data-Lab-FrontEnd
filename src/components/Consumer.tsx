@@ -2,8 +2,9 @@
 
 
 import React, { useState } from "react";
-import "./consumer.css"
-require('dotenv').config()  
+import "./consumer.css";
+import Modal from './Modal';
+require('dotenv').config();  
 
 
 function Consumer() {
@@ -44,9 +45,11 @@ function Consumer() {
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
-        <button className="consumerButton"  onClick={() => display() }>clickME</button>
+        <Modal data={"Hier steht was."}/>
+        {/* <button className="consumerButton"  onClick={() => display() }>clickME</button> */}
       </div>
     ))} </div>)
+
 
     return (
     <div>
