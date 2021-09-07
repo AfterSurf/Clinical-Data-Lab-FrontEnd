@@ -1,12 +1,26 @@
 import React, { useState, useRef, forwardRef, useEffect, createElement } from 'react';
 
 const LoginForm = forwardRef((props, ref: any) => {
+  const host = process.env.REACT_APP_HOST
+
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [app, setApp] = useState(null)
 
     const handleChange = (e:any) => { setApp(e.target.value)} 
-    
+    const post = async() => {
+
+        const requestOptionsGet = {
+          method: "POST",
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({name: username, description:password})
+        };
+      // GET request using fetch with async/await
+      const response:any = await fetch(`http://${host}:3003/putConsumer`,requestOptionsGet);
+      const json = await response.json();
+        console.log(json)
+
+    }
     // useEffect(() => {
     //   ref.current.focus()
     // }, [])
@@ -19,15 +33,21 @@ const LoginForm = forwardRef((props, ref: any) => {
         setPassword(e.target.value)
       }} />
 
-<input type="radio" value="male" id="male"
-              onChange={handleChange} name="gender" />
-            <label htmlFor="male">Male</label>
+<input type="checkbox" value="device" id="device"
+              onChange={handleChange} name="device" />
+            <label htmlFor="device">device</label>
 
-            <input type="radio" value="female" id="female"
-              onChange={handleChange} name="gender"/>
-            <label htmlFor="female">Female</label>
+            <input type="checkbox" value="observation" id="observation"
+              onChange={handleChange} name="observation"/>
+              <label htmlFor="observation">observation</label>
+            <input type="checkbox" value="patient" id="patient"
+              onChange={handleChange} name="patient"/>
+            <label htmlFor="patient">patient</label>
+            <input type="checkbox" value="practitioner" id="practitioner"
+              onChange={handleChange} name="practitioner"/>
+            <label htmlFor="practitioner">practitioner</label>
 
-      <button onClick={() => {alert("show: " + username + " " + password + " " + app)}}>Submit</button>
+      <button onClick={() => {post()}}>Submit</button>
     </>
   })
 

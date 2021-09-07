@@ -24,7 +24,7 @@ function Consumer() {
       for (let element in json) {  
           console.log("element: ",json[element])
           outputArray.push( 
-            [json[element]._id,json[element].name,json[element].apiKey]
+            [json[element]._id,json[element].name,json[element].apiKey, [json[element].permissions]]
           );  
       }
       console.log("output:",outputArray)
@@ -38,20 +38,17 @@ function Consumer() {
       return alert("thanks for clickin");
     }
 
-    var modalElemnt = (<div>
-      <li>a</li>
-      <li>b</li>
-      <li>c</li>
-    </div>)
 
     {consumerData.map((element) => {<li>{element[0]}</li>})}
     
-    const Test = (<div className="consumerHead"> {consumerData.map(station => (
+    var Test = (<div className="consumerHead"> {consumerData.map(station => (
       <div className="consumer" key={station[0]}>
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
-        <Modal data={modalElemnt}/>
+        <ul>permissions: {station[3]}</ul>
+
+        <Modal data={station}/>
         {/* <button className="consumerButton"  onClick={() => display() }>clickME</button> */}
       </div>
     ))} </div>)

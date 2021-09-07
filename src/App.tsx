@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './App.css'
 import Device from "./components/Device";
 import Observation from "./components/Observation";
 import Patient from "./components/Patient";
@@ -48,6 +49,28 @@ function App() {
 
   return (
       <div className="App">
+        <h1>Clinical Data Lab </h1>
+
+          <button type="submit" onClick={getInitData}>
+            pull data
+          </button>
+          <Consumer/>
+        <div className="showData">
+          <Device/>
+          <Observation/>
+          <Patient/>
+          <Practitioner/>
+        </div>
+        <LogInForm/>
+      </div>
+  );
+}
+
+export default App;
+
+
+/*
+
         <form>
           <h2>push Data</h2>
           <input  placeholder="Title" value={title}
@@ -66,14 +89,4 @@ function App() {
           <p>{data}</p>
         </form>
 
-        <Device/>
-        <Observation/>
-        <Patient/>
-        <Practitioner/>
-        <LogInForm/>
-        <Consumer/>
-      </div>
-  );
-}
-
-export default App;
+*/
