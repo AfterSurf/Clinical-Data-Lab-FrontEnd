@@ -34,7 +34,8 @@ function ModalInFunctionalComponent(props: any){
 
             <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)}>
             <button onClick={setModalIsOpenToFalse}>x</button>
-            <AnimeList/>
+            {/* <AnimeList/> */}
+                {props.data}
             </Modal>
         </>
     )
