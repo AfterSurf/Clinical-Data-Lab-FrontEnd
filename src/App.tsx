@@ -4,6 +4,7 @@ import Observation from "./components/Observation";
 import Patient from "./components/Patient";
 import Practitioner from "./components/Practitioner";
 import LogInForm from "./components/Form";
+import Consumer from "./components/Consumer";
 require('dotenv').config();
 
 
@@ -70,6 +71,7 @@ function App() {
         <Patient/>
         <Practitioner/>
         <LogInForm/>
+        <Consumer/>
       </div>
   );
 }

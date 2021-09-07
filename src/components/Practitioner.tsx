@@ -4,12 +4,10 @@ require('dotenv').config()
 
 function Practitioner() {
     const host = process.env.REACT_APP_HOST
-    console.log("host ", host)
-    console.log("host ", process.env.HOST)
 
     const [practitionerData, setPractitionerData] = useState("null");
 
-    const getObservationDataData = async(e:any) => {
+    const getObservationData = async(e:any) => {
         const requestOptionsGet = {
           method: "GET"
         };
@@ -24,7 +22,7 @@ function Practitioner() {
     <div>
         <h1>Practitioner</h1>
       <p>{practitionerData}</p>
-        <button type="submit" onClick={getObservationDataData}>
+        <button type="submit" onClick={getObservationData}>
             getData
         </button>
     </div>
