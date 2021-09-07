@@ -1,3 +1,6 @@
+// https://css-tricks.com/considerations-styling-modal/
+
+
 import React, { useState } from "react";
 import "./consumer.css"
 require('dotenv').config()  
@@ -36,12 +39,12 @@ function Consumer() {
 
     {consumerData.map((element) => {<li>{element[0]}</li>})}
     
-    const Test = (<div> {consumerData.map(station => (
+    const Test = (<div className="consumerHead"> {consumerData.map(station => (
       <div className="consumer" key={station[0]}>
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
-        <button onClick={() => display() }>clickME</button>
+        <button className="consumerButton"  onClick={() => display() }>clickME</button>
       </div>
     ))} </div>)
 
