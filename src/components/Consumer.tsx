@@ -37,7 +37,7 @@ function Consumer() {
     console.log("consumerdata: ", consumerData)
 
     
-    var Test = (<div className="consumerHead"> {consumerData.map(station => (
+    var Component = (<div className="consumerHead"> {consumerData.map(station => (
       <div className="consumer" key={station[0]}>
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
@@ -54,7 +54,7 @@ function Consumer() {
     return (
     <div>
         <h1>Consumer</h1>
-          {Test}
+          {Component}
         <button type="submit" onClick={getConsumerData}>
             getData
         </button>

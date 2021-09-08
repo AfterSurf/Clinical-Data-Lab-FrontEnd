@@ -25,11 +25,19 @@ function Device() {
       setDeviceData(outputArray);
     }
 
+    var Component = (<div className="consumerHead"> {deviceData.map(device => (
+      <div className="consumer" key={device[0]}>
+        <ul>id: {device[0]}</ul>
+        <ul>name: {device[1]}</ul>
+        <ul>operatingsystem: {device[2]}</ul>
+        <ul>owner: {device[3]}</ul>
+      </div>
+    ))} </div>)
 
     return (
     <div>
         <h1>Device</h1>
-      <p>{deviceData}</p>
+      <p>{Component}</p>
         <button type="submit" onClick={getDeviceData}>
             getData
         </button>
