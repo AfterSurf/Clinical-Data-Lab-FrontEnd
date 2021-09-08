@@ -37,8 +37,8 @@ function Consumer() {
     console.log("consumerdata: ", consumerData)
 
     
-    var Component = (<div className="consumerHead"> {consumerData.map(station => (
-      <div className="consumer" key={station[0]}>
+    var Component = (<div className="consumerHead" > {consumerData.map(station => (
+      <div className="consumer" onClick={() => {console.log(`Consumer ${station[0]} wurde geklickt`)}} key={station[0]}>
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
