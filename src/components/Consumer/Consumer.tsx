@@ -1,11 +1,12 @@
 // https://css-tricks.com/considerations-styling-modal/
 
 
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./consumer.css";
-import Modal from './Modal';
+import Modal from '../Modal';
+import ConsumerProvider, { ConsumerContext } from "./ConsumerContext";
 // hooks
-import getPermissions from "../hooks/getPermissions"
+import getPermissions from "../../hooks/getPermissions"
 require('dotenv').config();  
 
 
@@ -13,7 +14,8 @@ function Consumer() {
     const host = process.env.REACT_APP_HOST
 
     const [consumerData, setConsumerData] = useState([[""]]);
-    const [consumerPermissions, setConsumerPermissions] = useState();
+
+    const { permissions, addPermission } = useContext(ConsumerContext);
 
     const getConsumerData = async(e:any) => {
         const requestOptionsGet = {
@@ -38,7 +40,7 @@ function Consumer() {
 
     
     var Component = (<div className="consumerHead" > {consumerData.map(station => (
-      <div className="consumer" onClick={() => {console.log(`Consumer ${station[0]} wurde geklickt`)}} key={station[0]}>
+      <div className="consumer" onClick={() => {addPermission(getPermissions(station[3]))}} key={station[0]}>
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
@@ -63,4 +65,9 @@ function Consumer() {
 
 }
 
-export default Consumer
+export default () => (
+  <ConsumerProvider>
+    <Consumer />
+  </ConsumerProvider>
+);
+

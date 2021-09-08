@@ -5,14 +5,18 @@ import Observation from "./components/Observation";
 import Patient from "./components/Patient";
 import Practitioner from "./components/Practitioner";
 import LogInForm from "./components/Form";
-import Consumer from "./components/Consumer";
+// import Consumer from "./components/Consumer/Consumer";
+import Consumer from './components/Consumer/Consumer'
 
+import Todos from './Context/Todos'
 
 require('dotenv').config();
 
 
 function App() {
   const host = process.env.REACT_APP_HOST
+
+  const [state, setState] = useState({});  
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -52,6 +56,7 @@ function App() {
   
 
   return (
+
       <div className="App">
         <h1>Clinical Data Lab </h1>
 
@@ -67,7 +72,9 @@ function App() {
           <Practitioner/>
         </div>
         <LogInForm/>
+        <Todos/>
       </div>
+
   );
 }
 
