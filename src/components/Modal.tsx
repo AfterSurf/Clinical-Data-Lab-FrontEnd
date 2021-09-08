@@ -3,6 +3,7 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal';
 import AnimeList from './Anime';
+import getPermissionsDisplay from "../hooks/getPermissions"
 
 function ModalInFunctionalComponent(props: any){
 
@@ -27,15 +28,20 @@ function ModalInFunctionalComponent(props: any){
     const setModalIsOpenToFalse =()=>{
         setModalIsOpen(false)
     }
+    const permissions = getPermissionsDisplay(props.data);
+    console.log("props-data: ",props.data)
+    console.log("permissions[0]", permissions[1])
 
+    const show = permissions.map((element:string) => {<li>{element}</li>})
     return(
         <>
             <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
 
-            <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)}>
+            <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
             <button onClick={setModalIsOpenToFalse}>x</button>
             {/* <AnimeList/> */}
-                {props.data}
+                {permissions}
+                
             </Modal>
         </>
     )

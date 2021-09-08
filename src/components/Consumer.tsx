@@ -4,6 +4,8 @@
 import React, { useState } from "react";
 import "./consumer.css";
 import Modal from './Modal';
+// hooks
+import getPermissions from "../hooks/getPermissions"
 require('dotenv').config();  
 
 
@@ -11,6 +13,7 @@ function Consumer() {
     const host = process.env.REACT_APP_HOST
 
     const [consumerData, setConsumerData] = useState([[""]]);
+    const [consumerPermissions, setConsumerPermissions] = useState();
 
     const getConsumerData = async(e:any) => {
         const requestOptionsGet = {
@@ -33,13 +36,6 @@ function Consumer() {
     }
     console.log("consumerdata: ", consumerData)
 
-    var display = () => {
-      console.log("click")
-      return alert("thanks for clickin");
-    }
-
-
-    {consumerData.map((element) => {<li>{element[0]}</li>})}
     
     var Test = (<div className="consumerHead"> {consumerData.map(station => (
       <div className="consumer" key={station[0]}>
@@ -47,9 +43,10 @@ function Consumer() {
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
         <ul>permissions: {station[3]}</ul>
-
-        <Modal data={station}/>
-        {/* <button className="consumerButton"  onClick={() => display() }>clickME</button> */}
+        {station[3] ? 
+          <Modal data={station[3].toString()}/>
+        : ""}
+        
       </div>
     ))} </div>)
 
