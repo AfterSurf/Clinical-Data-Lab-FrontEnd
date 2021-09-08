@@ -12,6 +12,8 @@ require('dotenv').config();
 
 
 function App() {
+  const host = process.env.REACT_APP_HOST
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [message, setMessage] = useState("empty")
@@ -30,7 +32,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     };
-    const response = await fetch("http://192.168.178.33:3003/initData", requestOptions)
+    const response = await fetch(`http://${host}:3003/initObservation`, requestOptions)
     const json = await response.json();
     setMessage(JSON.stringify(json));
     console.log(json);
@@ -53,7 +55,8 @@ function App() {
       <div className="App">
         <h1>Clinical Data Lab </h1>
 
-          <button type="submit" onClick={getInitData}>
+          {/* <button type="submit" onClick={getInitData}> */}
+          <button type="submit" onClick={handleSubmit}>
             pull data
           </button>
           <Consumer/>

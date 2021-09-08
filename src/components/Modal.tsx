@@ -40,7 +40,7 @@ function ModalInFunctionalComponent(props: any){
             <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
             <button onClick={setModalIsOpenToFalse}>x</button>
             {/* <AnimeList/> */}
-                {permissions}
+               Permissions:  {permissions}
                 
             </Modal>
         </>

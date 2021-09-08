@@ -6,7 +6,7 @@ require('dotenv').config();
 function Device() {
     const host = process.env.REACT_APP_HOST;  
 
-    const [deviceData, setDeviceData] = useState(["test"]);
+    const [deviceData, setDeviceData] = useState([[""]]);
 
     const getDeviceData = async(e:any) => {
         const requestOptionsGet = {
@@ -15,14 +15,16 @@ function Device() {
       // GET request using fetch with async/await
       const response:any = await fetch(`http://${host}:3003/getDevice`,requestOptionsGet);
       let json = await response.json();
-      const dataArray = formArray(json)
-      // setDeviceData(JSON.stringify(json));
-      setDeviceData(dataArray);
+      var outputArray = [];  
+      for (let element in json) {  
+          console.log("element: ",json[element])
+          outputArray.push( 
+            [json[element]._id,json[element].name,json[element].operatingsystem, [json[element].owner]]
+          );  
+      }
+      setDeviceData(outputArray);
     }
 
-    const formArray = (element: any) => {
-      return [element];
-    }
 
     return (
     <div>

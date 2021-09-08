@@ -4,7 +4,7 @@ require('dotenv').config();
 function Patient() {
   const host = process.env.REACT_APP_HOST;
 
-    const [patientData, setPatientData] = useState("null");
+    const [patientData, setPatientData] = useState([[""]]);
 
     const getPatientData = async(e:any) => {
         const requestOptionsGet = {
@@ -14,7 +14,7 @@ function Patient() {
         const response:any = await fetch(`http://${host}:3003/getPatient`,requestOptionsGet);
         const json = await response.json();
         console.log(JSON.stringify(json));
-        setPatientData(JSON.stringify(json));
+        setPatientData(json);
     }
 
     return (

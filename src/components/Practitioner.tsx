@@ -5,7 +5,7 @@ require('dotenv').config()
 function Practitioner() {
     const host = process.env.REACT_APP_HOST
 
-    const [practitionerData, setPractitionerData] = useState("null");
+    const [practitionerData, setPractitionerData] = useState([[""]]);
 
     const getObservationData = async(e:any) => {
         const requestOptionsGet = {
@@ -15,7 +15,7 @@ function Practitioner() {
       const response:any = await fetch(`http://${host}:3003/getPractitioner`,requestOptionsGet);
       const json = await response.json();
       console.log(JSON.stringify(json));
-      setPractitionerData(JSON.stringify(json));
+      setPractitionerData(json);
     }
     
     return (

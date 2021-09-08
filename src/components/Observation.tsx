@@ -4,7 +4,7 @@ require('dotenv').config();
 function Observation() {
   const host = process.env.REACT_APP_HOST;
 
-    const [observationData, setObservationData] = useState("null");
+    const [observationData, setObservationData] = useState([[""]]);
 
     const getObservationDataData = async(e:any) => {
         const requestOptionsGet = {
@@ -13,8 +13,16 @@ function Observation() {
       // GET request using fetch with async/await
       const response:any = await fetch(`http://${host}:3003/getPatient`,requestOptionsGet);
       const json = await response.json();
-      console.log(JSON.stringify(json));
-      setObservationData(JSON.stringify(json));
+
+      var outputArray = [];  
+      for (let element in json) {  
+          console.log("element: ",json[element])
+          outputArray.push( 
+            [json[element]._id,json[element].name,json[element].operatingsystem, [json[element].owner]]
+          );  
+      }
+
+      setObservationData(json);
     }
     
     return (
