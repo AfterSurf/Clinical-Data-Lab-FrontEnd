@@ -66,8 +66,8 @@ function Consumer() {
 }
 
 export default () => (
-  <ConsumerProvider>
+  // <ConsumerProvider>
     <Consumer />
-  </ConsumerProvider>
+  // </ConsumerProvider>
 );
 

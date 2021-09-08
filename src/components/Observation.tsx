@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import ConsumerContext, {ConsumerContextconsumer} from './Consumer/ConsumerContext'
+import { ConsumerContextState } from "./Consumer/types";
 require('dotenv').config();
 
-function Observation() {
+export default function Observation(props:any) {
   const host = process.env.REACT_APP_HOST;
 
     const [observationData, setObservationData] = useState([[""]]);
@@ -33,17 +35,20 @@ function Observation() {
         <ul>description: {observation[3]}</ul>
       </div>
     ))} </div>)
-    
+
+    console.log("ObservationProps: ", JSON.stringify(props))
+    const appContext = useContext<ConsumerContextState>(ConsumerContext)
+    console.log("appcontext: ",appContext)
     return (
+
     <div>
         <h1>Observation</h1>
         <p>{Component}</p>
+        
         <button type="submit" onClick={getObservationDataData}>
             getData
         </button>
     </div>
+
     )
-
 }
-
-export default Observation

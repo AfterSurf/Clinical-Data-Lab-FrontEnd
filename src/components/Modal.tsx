@@ -2,7 +2,6 @@
 
 import React, {useState} from 'react';
 import Modal from 'react-modal';
-import AnimeList from './Anime';
 import getPermissionsDisplay from "../hooks/getPermissions"
 
 function ModalInFunctionalComponent(props: any){

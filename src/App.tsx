@@ -6,7 +6,11 @@ import Patient from "./components/Patient";
 import Practitioner from "./components/Practitioner";
 import LogInForm from "./components/Form";
 // import Consumer from "./components/Consumer/Consumer";
-import Consumer from './components/Consumer/Consumer'
+import Consumer  from './components/Consumer/Consumer'
+
+import ConsumerProvider from "./components/Consumer/ConsumerContext";
+
+
 
 import Todos from './Context/Todos'
 
@@ -14,6 +18,8 @@ require('dotenv').config();
 
 
 function App() {
+
+
   const host = process.env.REACT_APP_HOST
 
   const [state, setState] = useState({});  
@@ -52,9 +58,6 @@ function App() {
       setData(JSON.stringify(json));
   }
 
-
-  
-
   return (
 
       <div className="App">
@@ -64,6 +67,7 @@ function App() {
           <button type="submit" onClick={handleSubmit}>
             pull data
           </button>
+          <ConsumerProvider>
           <Consumer/>
         <div className="showData">
           <Device/>
@@ -71,10 +75,10 @@ function App() {
           <Patient/>
           <Practitioner/>
         </div>
+        </ConsumerProvider>
         <LogInForm/>
         <Todos/>
       </div>
-
   );
 }
 
