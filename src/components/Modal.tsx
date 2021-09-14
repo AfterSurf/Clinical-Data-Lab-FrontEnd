@@ -28,8 +28,10 @@ function ModalInFunctionalComponent(props: any){
         setModalIsOpen(false)
     }
     const permissions = getPermissionsDisplay(props.data);
-    console.log("props-data: ",props.data)
-    console.log("permissions[0]", permissions[1])
+    // console.log("props-data: ",props.data)
+    // console.log("permissions[0]", permissions[0])
+    // console.log("permissions[1]", permissions[1])
+    // console.log("permissions[2]", permissions[2])
 
     const show = permissions.map((element:string) => {<li>{element}</li>})
     return(

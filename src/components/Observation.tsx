@@ -16,7 +16,6 @@ export default function Observation(props:any) {
 
       var outputArray = [];  
       for (let element in json) {  
-          console.log("element: ",json[element])
           outputArray.push( 
             [json[element]._id,json[element].patient,json[element].practitioner, json[element].description]
           );  
@@ -31,20 +30,16 @@ export default function Observation(props:any) {
         <ul>patient: {observation[1]}</ul>
         <ul>practitioner: {observation[2]}</ul>
         <ul>description: {observation[3]}</ul>
-      </div>
-    ))} </div>)
+      </div>))} 
+      </div>)
 
-    console.log("ObservationProps: ", JSON.stringify(props))
     return (
-
-    <div>
-        <h1>Observation</h1>
-        <p>{Component}</p>
-        
-        <button type="submit" onClick={getObservationDataData}>
-            getData
-        </button>
-    </div>
-
+      <div>
+          <h1>Observation</h1>
+          <p>{Component}</p>
+          <button type="submit" onClick={getObservationDataData}>
+              getData
+          </button>
+      </div>
     )
 }

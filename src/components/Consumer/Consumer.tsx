@@ -5,7 +5,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./consumer.css";
 import Modal from '../Modal';
 // hooks
-import getPermissions from "../../hooks/getPermissions"
+import { getPermissions} from "../../hooks/getPermissions"
 import {AccessContextConsumer, IAccessState} from "../../Context/accesContext"
 require('dotenv').config();  
 
@@ -25,20 +25,20 @@ function Consumer() {
 
       var outputArray = [];  
       for (let element in json) {  
-          console.log("element: ",json[element])
           outputArray.push( 
             [json[element]._id,json[element].name,json[element].apiKey, [json[element].permissions]]
           );  
       }
-      console.log("output:",outputArray)
       setConsumerData(outputArray);
-      // setConsumerData(JSON.stringify(json));
     }
-    console.log("consumerdata: ", consumerData)
 
     
-    var Component = (<div className="consumerHead" > {consumerData.map(station => (
-      <div className="consumer" onClick={() => {console.log("consumerLog")}} key={station[0]}>
+    var Component = (
+      <AccessContextConsumer>
+      {(context: any) => ( 
+    <div className="consumerHead" > {consumerData.map(station => (
+      
+      <div className="consumer" key={station[0]}>
         <ul>id: {station[0]}</ul>
         <ul>name: {station[1]}</ul>
         <ul>apiKey: {station[2]}</ul>
@@ -46,26 +46,24 @@ function Consumer() {
         {station[3] ? 
           <Modal data={station[3].toString()}/>
         : ""}
-        
+          <button onClick={() => context.toggleAccess({access: getPermissions(station[3].toString())})}>
+                useContext
+          </button>
       </div>
-    ))} </div>)
+    ))} </div>
+    )}
+    </AccessContextConsumer>
+    )
 
 
     return (
-      <AccessContextConsumer>
-      {(context: any) => ( // spielState toggleSpiel
         <div>
             <h1>Consumer</h1>
               {Component}
             <button type="submit" onClick={getConsumerData}>
                 getData
             </button>
-            <button onClick={() => context.toggleAccess()}>
-                useContext
-            </button>
         </div>
-      )}
-      </AccessContextConsumer>
     )
 
 }

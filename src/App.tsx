@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import './App.css'
 import Device from "./components/Device";
 import Observation from "./components/Observation";
@@ -33,7 +33,6 @@ function App() {
     const response = await fetch(`http://${host}:3003/initObservation`, requestOptions)
     const json = await response.json();
     setMessage(JSON.stringify(json));
-    console.log(json);
   };
 
   const getInitData = async(e:any) => {
