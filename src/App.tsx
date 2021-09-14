@@ -1,37 +1,22 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import './App.css'
 import Device from "./components/Device";
 import Observation from "./components/Observation";
 import Patient from "./components/Patient";
 import Practitioner from "./components/Practitioner";
 import LogInForm from "./components/Form";
-// import Consumer from "./components/Consumer/Consumer";
-import Consumer  from './components/Consumer/Consumer'
-
-import ConsumerProvider from "./components/Consumer/ConsumerContext";
-
-
-
-import Todos from './Context/Todos'
 
 require('dotenv').config();
 
 
 function App() {
 
-
   const host = process.env.REACT_APP_HOST
-
-  const [state, setState] = useState({});  
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [message, setMessage] = useState("empty")
   const [data, setData] = useState("null");
-  
-
-  const onTitleChange = (e:any) => setTitle(e.target.value);
-  const onBodyChange = (e:any) => setBody(e.target.value);
 
   const handleSubmit = async (e:any) => {
     e.preventDefault();
@@ -58,26 +43,24 @@ function App() {
       setData(JSON.stringify(json));
   }
 
+
+  
+
   return (
+
 
       <div className="App">
         <h1>Clinical Data Lab </h1>
-
-          {/* <button type="submit" onClick={getInitData}> */}
           <button type="submit" onClick={handleSubmit}>
             pull data
           </button>
-          <ConsumerProvider>
-          <Consumer/>
         <div className="showData">
           <Device/>
           <Observation/>
           <Patient/>
           <Practitioner/>
         </div>
-        </ConsumerProvider>
         <LogInForm/>
-        <Todos/>
       </div>
   );
 }

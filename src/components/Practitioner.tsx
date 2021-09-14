@@ -23,11 +23,11 @@ function Practitioner() {
           );  
       }
 
-      setPractitionerData(json);
+      setPractitionerData(outputArray);
     }
 
     var Component = (<div className="consumerHead"> {practitionerData.map(practitioner => (
-      <div className="consumer" key={practitioner[0]}>
+      <div className="consumer" key={practitioner[1]}>
         <ul>id: {practitioner[0]}</ul>
         <ul>name: {practitioner[1]}</ul>
         <ul>age: {practitioner[2]}</ul>

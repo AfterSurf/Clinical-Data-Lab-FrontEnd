@@ -1,6 +1,4 @@
 import React, { useState, useContext } from "react";
-import ConsumerContext, {ConsumerContextconsumer} from './Consumer/ConsumerContext'
-import { ConsumerContextState } from "./Consumer/types";
 require('dotenv').config();
 
 export default function Observation(props:any) {
@@ -37,8 +35,6 @@ export default function Observation(props:any) {
     ))} </div>)
 
     console.log("ObservationProps: ", JSON.stringify(props))
-    const appContext = useContext<ConsumerContextState>(ConsumerContext)
-    console.log("appcontext: ",appContext)
     return (
 
     <div>
