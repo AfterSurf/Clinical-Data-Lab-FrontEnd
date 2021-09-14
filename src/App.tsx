@@ -5,6 +5,9 @@ import Observation from "./components/Observation";
 import Patient from "./components/Patient";
 import Practitioner from "./components/Practitioner";
 import LogInForm from "./components/Form";
+import Consumer from './components/Consumer/Consumer';
+
+import {AccessContextProvider} from './Context/accesContext'
 
 require('dotenv').config();
 
@@ -54,12 +57,16 @@ function App() {
           <button type="submit" onClick={handleSubmit}>
             pull data
           </button>
-        <div className="showData">
-          <Device/>
-          <Observation/>
-          <Patient/>
-          <Practitioner/>
-        </div>
+
+        <AccessContextProvider>
+          <Consumer/>
+          <div className="showData">
+            <Device/>
+            <Observation/>
+            <Patient/>
+            <Practitioner/>
+          </div>
+        </AccessContextProvider>
         <LogInForm/>
       </div>
   );

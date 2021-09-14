@@ -6,6 +6,7 @@ import "./consumer.css";
 import Modal from '../Modal';
 // hooks
 import getPermissions from "../../hooks/getPermissions"
+import {AccessContextConsumer, IAccessState} from "../../Context/accesContext"
 require('dotenv').config();  
 
 
@@ -51,13 +52,20 @@ function Consumer() {
 
 
     return (
-    <div>
-        <h1>Consumer</h1>
-          {Component}
-        <button type="submit" onClick={getConsumerData}>
-            getData
-        </button>
-    </div>
+      <AccessContextConsumer>
+      {(context: any) => ( // spielState toggleSpiel
+        <div>
+            <h1>Consumer</h1>
+              {Component}
+            <button type="submit" onClick={getConsumerData}>
+                getData
+            </button>
+            <button onClick={() => context.toggleAccess()}>
+                useContext
+            </button>
+        </div>
+      )}
+      </AccessContextConsumer>
     )
 
 }
