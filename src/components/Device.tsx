@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {AccessContextConsumer, IAccessState, IAccessContextProps} from "../Context/accesContext"
 require('dotenv').config();
 
 
@@ -25,25 +26,36 @@ function Device() {
       setDeviceData(outputArray);
     }
 
-    var Component = (<div className="consumerHead"> {deviceData.map(device => (
-      <div className="consumer" key={device[0]}>
-        <ul>id: {device[0]}</ul>
-        <ul>name: {device[1]}</ul>
-        <ul>operatingsystem: {device[2]}</ul>
-        <ul>owner: {device[3]}</ul>
-      </div>
-    ))} </div>)
+    var Component = (
+
+          // <div onClick={() => {console.log("device: ",context.accessState.toString())}}>
+            <div className="consumerHead"> {deviceData.map(device => (
+              <div className="consumer" key={device[0]}>
+                <ul>id: {device[0]}</ul>
+                <ul>name: {device[1]}</ul>
+                <ul>operatingsystem: {device[2]}</ul>
+                <ul>owner: {device[3]}</ul>
+              </div>
+
+                    ))}
+            </div> 
+          // </div> 
+        )
 
     return (
-    <div>
-        <h1>Device</h1>
-      <p>{Component}</p>
-        <button type="submit" onClick={getDeviceData}>
-            getData
-        </button>
-    </div>
+      <AccessContextConsumer>
+        {(context: IAccessContextProps) => ( 
+          <div>
+            <h1>Device</h1>
+            <p>{Component}</p>
+            <button disabled={!context.accessState.access.includes("device")} type="submit" onClick={getDeviceData}>
+                getData
+            </button>
+            <button onClick={() => {console.log("consumer: ", context.accessState.access.toString())}}> contextData </button>
+          </div>
+        )}
+      </AccessContextConsumer>
     )
-
 }
 
 

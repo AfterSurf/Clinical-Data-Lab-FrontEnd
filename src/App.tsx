@@ -61,9 +61,9 @@ function App() {
           <Consumer/>
           <div className="showData">
             <Device/>
-            <Observation/>
+            {/* <Observation/>
             <Patient/>
-            <Practitioner/>
+            <Practitioner/> */}
           </div>
         </AccessContextProvider>
         <LogInForm/>

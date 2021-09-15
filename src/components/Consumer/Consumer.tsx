@@ -6,7 +6,7 @@ import "./consumer.css";
 import Modal from '../Modal';
 // hooks
 import { getPermissions} from "../../hooks/getPermissions"
-import {AccessContextConsumer, IAccessState} from "../../Context/accesContext"
+import {AccessContextConsumer} from "../../Context/accesContext"
 require('dotenv').config();  
 
 
@@ -36,22 +36,23 @@ function Consumer() {
     var Component = (
       <AccessContextConsumer>
       {(context: any) => ( 
-    <div className="consumerHead" > {consumerData.map(station => (
-      
-      <div className="consumer" key={station[0]}>
-        <ul>id: {station[0]}</ul>
-        <ul>name: {station[1]}</ul>
-        <ul>apiKey: {station[2]}</ul>
-        <ul>permissions: {station[3]}</ul>
-        {station[3] ? 
-          <Modal data={station[3].toString()}/>
-        : ""}
-          <button onClick={() => context.toggleAccess({access: getPermissions(station[3].toString())})}>
-                useContext
-          </button>
-      </div>
-    ))} </div>
-    )}
+        <div className="consumerHead" > {consumerData.map(station => (
+          
+          <div className="consumer" key={station[0]}>
+
+            <ul>id: {station[0]}</ul>
+            <ul>name: {station[1]}</ul>
+            <ul>apiKey: {station[2]}</ul>
+            <ul>permissions: {station[3]}</ul>
+            {station[3] ? 
+              <Modal data={station[3].toString()}/>
+            : ""}
+              <button onClick={() => context.toggleAccess({access: getPermissions(station[3].toString())})}>
+                    useContext
+              </button>
+          </div>
+        ))} </div>
+      )}
     </AccessContextConsumer>
     )
 
