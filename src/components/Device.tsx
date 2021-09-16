@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {AccessContextConsumer, IAccessState, IAccessContextProps} from "../Context/accesContext"
+import {AccessContextConsumer, IAccessContextProps} from "../Context/accesContext"
 require('dotenv').config();
 
 

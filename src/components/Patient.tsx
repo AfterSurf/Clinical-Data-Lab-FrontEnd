@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {AccessContextConsumer, IAccessContextProps} from "../Context/accesContext"
 require('dotenv').config();
 
 function Patient() {
@@ -34,13 +35,18 @@ function Patient() {
     ))} </div>)
 
     return (
-        <div>
+      <AccessContextConsumer>
+        {(context: IAccessContextProps) => ( 
+          <div>
             <h1>Patient</h1>
             <p>{Component}</p>
-            <button type="submit" onClick={getPatientData}>
-            getData
-          </button>
-        </div>
+            <button disabled={!context.accessState.access.includes("patient")} type="submit" onClick={getPatientData}>
+                getData
+            </button>
+            <button onClick={() => {console.log("consumer: ", context.accessState.access.toString())}}> contextData </button>
+          </div>
+        )}
+      </AccessContextConsumer>
     )
 
 }
