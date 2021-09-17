@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import './App.css'
-import Device from "./components/Device";
-import Observation from "./components/Observation";
-import Patient from "./components/Patient";
-import Practitioner from "./components/Practitioner";
-import LogInForm from "./components/Form";
-import Consumer from './components/Consumer/Consumer';
 
-import {AccessContextProvider} from './Context/accesContext'
+
+import Consumer from './components/Consumer/Consumer';
+import Choice from "./components/choice";
+import {AccessContextProvider} from './context/accesContext'
 
 require('dotenv').config();
 
@@ -60,13 +57,9 @@ function App() {
         <AccessContextProvider>
           <Consumer/>
           <div className="showData">
-            <Device/>
-            {/* <Observation/>
-            <Patient/>
-            <Practitioner/> */}
+          <Choice/>
           </div>
         </AccessContextProvider>
-        <LogInForm/>
       </div>
   );
 }

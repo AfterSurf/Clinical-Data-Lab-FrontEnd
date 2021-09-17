@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import {AccessContextConsumer, IAccessContextProps} from "../Context/accesContext"
+import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
 require('dotenv').config();
 
 
 
-function Device() {
+function Device(props:any) {
     const host = process.env.REACT_APP_HOST;  
 
     const [deviceData, setDeviceData] = useState([[""]]);
@@ -46,7 +46,7 @@ function Device() {
       <AccessContextConsumer>
         {(context: IAccessContextProps) => ( 
           <div>
-            <h1>Device</h1>
+            <h1 onClick={() => props.action("choice")}>Device</h1>
             <p>{Component}</p>
             <button disabled={!context.accessState.access.includes("device")} type="submit" onClick={getDeviceData}>
                 getData

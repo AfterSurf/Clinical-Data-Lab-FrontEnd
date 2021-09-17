@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {AccessContextConsumer, IAccessContextProps} from "../Context/accesContext"
+import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
 require('dotenv').config();
 
 export default function Observation(props:any) {
@@ -38,8 +38,8 @@ export default function Observation(props:any) {
       <AccessContextConsumer>
         {(context: IAccessContextProps) => ( 
           <div>
-            <h1>Device</h1>
-            <p>{Component}</p>
+            <h1>Observation</h1>
+            <div>{Component}</div>
             <button disabled={!context.accessState.access.includes("observation")} type="submit" onClick={getObservationDataData}>
                 getData
             </button>
