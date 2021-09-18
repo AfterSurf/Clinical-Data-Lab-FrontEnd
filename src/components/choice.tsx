@@ -22,7 +22,7 @@ function Choice() {
         setState(element);
     }
 
-    const choice = (<div className="choice">
+    const choice = (<div className="container choice">
             <p className="device rotate" onClick={()=>{trigger("device")}}>Device</p>
             <p className="observation rotate" onClick={()=>{trigger("observation")}}>Observation</p>
             <p className="patient rotate" onClick={()=>{trigger("patient")}}>Patient</p>
@@ -32,7 +32,7 @@ function Choice() {
     return (
         <AccessContextConsumer>
         {(context: IAccessContextProps) => ( 
-        <div className="container">
+        <div className="">
             { state === 'choice' && choice}
             { state === 'device' && <Device action={trigger}/>}
             { state === 'observation' && <Observation action={trigger}/>}

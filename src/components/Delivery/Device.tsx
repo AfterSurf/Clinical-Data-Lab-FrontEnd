@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
 import './delivery.css'
+
+import deviceImage from "../../icons/device.svg";
+
 require('dotenv').config();
 
 
@@ -32,6 +35,7 @@ function Device(props:any) {
           // <div onClick={() => {console.log("device: ",context.accessState.toString())}}>
             <div className="deliveryHead"> {deviceData.map(device => (
               <div className="delivery" key={device[0]}>
+                <img src={deviceImage}/>
                 <ul>id: {device[0]}</ul>
                 <ul>name: {device[1]}</ul>
                 <ul>operatingsystem: {device[2]}</ul>
@@ -48,6 +52,10 @@ function Device(props:any) {
         {(context: IAccessContextProps) => ( 
           <div>
             <h1 onClick={() => props.action("choice")}>Device</h1>
+
+
+
+
             <p>{Component}</p>
             <button disabled={!context.accessState.access.includes("device")} type="submit" onClick={getDeviceData}>
                 getData

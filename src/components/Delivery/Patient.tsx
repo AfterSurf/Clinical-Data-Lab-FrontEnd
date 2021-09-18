@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
+import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext";
+import patientImage from "../../icons/patient.svg";
 import './delivery.css'
 require('dotenv').config();
 
@@ -28,6 +29,7 @@ function Patient(props:any) {
 
     var Component = (<div className="deliveryHead"> {patientData.map(patient => (
       <div className="delivery" key={patient[0]}>
+        <img src={patientImage}/>
         <ul>id: {patient[0]}</ul>
         <ul>name: {patient[1]}</ul>
         <ul>age: {patient[2]}</ul>
