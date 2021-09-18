@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
+import './delivery.css'
 require('dotenv').config();
 
 
@@ -29,8 +30,8 @@ function Device(props:any) {
     var Component = (
 
           // <div onClick={() => {console.log("device: ",context.accessState.toString())}}>
-            <div className="consumerHead"> {deviceData.map(device => (
-              <div className="consumer" key={device[0]}>
+            <div className="deliveryHead"> {deviceData.map(device => (
+              <div className="delivery" key={device[0]}>
                 <ul>id: {device[0]}</ul>
                 <ul>name: {device[1]}</ul>
                 <ul>operatingsystem: {device[2]}</ul>

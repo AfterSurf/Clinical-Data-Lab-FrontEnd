@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
+import './delivery.css'
 require('dotenv').config();
+
 
 export default function Observation(props:any) {
   const host = process.env.REACT_APP_HOST;
@@ -25,8 +27,8 @@ export default function Observation(props:any) {
       setObservationData(outputArray);
     }
 
-    var Component = (<div className="consumerHead"> {observationData.map(observation => (
-      <div className="consumer" key={observation[0]}>
+    var Component = (<div className="deliveryHead"> {observationData.map(observation => (
+      <div className="delivery" key={observation[0]}>
         <ul>id: {observation[0]}</ul>
         <ul>patient: {observation[1]}</ul>
         <ul>practitioner: {observation[2]}</ul>
@@ -38,7 +40,7 @@ export default function Observation(props:any) {
       <AccessContextConsumer>
         {(context: IAccessContextProps) => ( 
           <div>
-            <h1>Observation</h1>
+            <h1 onClick={() => props.action("choice")}>Observation</h1>
             <div>{Component}</div>
             <button disabled={!context.accessState.access.includes("observation")} type="submit" onClick={getObservationDataData}>
                 getData

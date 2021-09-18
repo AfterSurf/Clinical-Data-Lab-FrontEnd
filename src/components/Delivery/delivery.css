@@ -1,0 +1,22 @@
+
+.delivery {
+  background-color: red;
+  margin: 2rem;
+  border-radius: 2%;
+}
+
+.deliveryHead {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  overflow: auto;
+  background: white;
+  justify-content: center;
+  /* for Firefox */
+  min-height: 0;
+}
+
+.consumerButton {
+  margin-left: 15%;
+}
+

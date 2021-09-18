@@ -34,28 +34,25 @@ function Consumer() {
 
     
     var Component = (
-      <AccessContextConsumer>
-      {(context: any) => ( 
-        <div className="consumerHead" > {consumerData.map(station => (
-          
-          <div className="consumer" key={station[0]}>
-
-            <ul>id: {station[0]}</ul>
-            <ul>name: {station[1]}</ul>
-            <ul>apiKey: {station[2]}</ul>
-            <ul>permissions: {station[3]}</ul>
-            {station[3] ? 
-              <Modal data={station[3].toString()}/>
-            : ""}
+      <div className="outerContainer">
+        <AccessContextConsumer>
+        {(context: any) => ( 
+          <div className="consumerHead" > {consumerData.map(station => (
+            <div className="consumer" key={station[0]}>
+              <ul>id: {station[0]}</ul>
+              <ul>name: {station[1]}</ul>
+              <ul>apiKey: {station[2]}</ul>
+              <ul>permissions: {station[3]}</ul>
+              {station[3] ? <Modal data={station[3].toString()}/>: ""}
               <button onClick={() => context.toggleAccess({access: getPermissions(station[3].toString())})}>
-                    useContext
+                  useContext
               </button>
-          </div>
-        ))} </div>
-      )}
-    </AccessContextConsumer>
+            </div>
+          ))} </div>
+        )}
+        </AccessContextConsumer>
+      </div>
     )
-
 
     return (
         <div>

@@ -1,3 +1,17 @@
+.outerContainer {
+      background: #3F51B5;
+
+  /* give the outermost container a predefined size */
+  /* position: absolute; */
+  /*  top: 0;
+  bottom: 0;
+  left: 0; */
+  /* width: 600px; */
+  
+  display: flex;
+  flex-direction: column;
+}
+
 .consumer {
     background-color: red;
     margin: 2rem;
@@ -9,8 +23,16 @@
 
 .consumerHead {
     display: flex;
-    width: 1000px;
-    flex-wrap: wrap;
+    /* width: 1000px; */
+    flex-direction: row;
+
+    background: white;
+    flex-grow: 1;
+    
+    overflow: auto;
+    
+    /* for Firefox */
+    min-height: 0;
 }
 
 .consumerButton {
