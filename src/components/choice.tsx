@@ -9,9 +9,6 @@ import Practitioner from "./Delivery/Practitioner";
 
 import {AccessContextConsumer, IAccessContextProps} from "../context/accesContext"
 
-
-import LogInForm from "./Form";
-
 import "./choice.css"
 
 function Choice() {

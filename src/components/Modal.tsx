@@ -3,6 +3,8 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal';
 import getPermissionsDisplay from "../hooks/getPermissions"
+import plusImage from "../icons/plus.svg";
+import Form from '../components/Consumer/Form';
 
 function ModalInFunctionalComponent(props: any){
 
@@ -36,12 +38,10 @@ function ModalInFunctionalComponent(props: any){
     const show = permissions.map((element:string) => {<li>{element}</li>})
     return(
         <>
-            <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
-
+            <img onClick={setModalIsOpenToTrue} src={plusImage}/>
             <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
             <button onClick={setModalIsOpenToFalse}>x</button>
-            {/* <AnimeList/> */}
-               Permissions:  {permissions}
+            <Form/>
                 
             </Modal>
         </>

@@ -1,12 +1,13 @@
 // https://css-tricks.com/considerations-styling-modal/
 
 
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import "./consumer.css";
 import Modal from '../Modal';
 // hooks
 import { getPermissions} from "../../hooks/getPermissions"
 import {AccessContextConsumer} from "../../context/accesContext"
+import NewConsumer from './newConsumer'
 require('dotenv').config();  
 
 
@@ -43,12 +44,14 @@ function Consumer() {
               <ul>name: {station[1]}</ul>
               <ul>apiKey: {station[2]}</ul>
               <ul>permissions: {station[3]}</ul>
-              {station[3] ? <Modal data={station[3].toString()}/>: ""}
+
               <button onClick={() => context.toggleAccess({access: getPermissions(station[3].toString())})}>
                   useContext
               </button>
             </div>
-          ))} </div>
+          ))} 
+            <NewConsumer/>
+          </div>
         )}
         </AccessContextConsumer>
       </div>
@@ -66,7 +69,5 @@ function Consumer() {
 
 }
 
-export default () => (
-    <Consumer />
-);
+export default () => ( <Consumer /> );
 
