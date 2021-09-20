@@ -35,13 +35,6 @@ function ModalInFunctionalComponent(props: any){
     const setModalIsOpenToFalse =()=>{
         setModalIsOpen(false)
     }
-    const permissions = getPermissions(props.data);
-    // console.log("props-data: ",props.data)
-    // console.log("permissions[0]", permissions[0])
-    // console.log("permissions[1]", permissions[1])
-    // console.log("permissions[2]", permissions[2])
-
-    const show = permissions.map((element:string) => {<li>{element}</li>})
 
     if(props.type === "new") {
         return(
@@ -50,7 +43,6 @@ function ModalInFunctionalComponent(props: any){
                 <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
                 <button onClick={setModalIsOpenToFalse}>x</button>
                 <Form text="create a new consumer"/>
-                    
                 </Modal>
             </>
         )

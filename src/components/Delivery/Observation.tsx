@@ -30,7 +30,7 @@ export default function Observation(props:any) {
 
     var Component = (<div className="deliveryHead"> {observationData.map(observation => (
       <div className="delivery" key={observation[0]}>
-        <img src={observationImage}/>
+        <img src={observationImage} className="image"/>
         <ul>id: {observation[0]}</ul>
         <ul>patient: {observation[1]}</ul>
         <ul>practitioner: {observation[2]}</ul>

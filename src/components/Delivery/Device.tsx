@@ -34,7 +34,7 @@ function Device(props:any) {
           // <div onClick={() => {console.log("device: ",context.accessState.toString())}}>
             <div className="deliveryHead"> {deviceData.map(device => (
               <div className="delivery" key={device[0]}>
-                <img src={deviceImage}/>
+                <img src={deviceImage} className="image"/>
                 <ul>id: {device[0]}</ul>
                 <ul>name: {device[1]}</ul>
                 <ul>operatingsystem: {device[2]}</ul>

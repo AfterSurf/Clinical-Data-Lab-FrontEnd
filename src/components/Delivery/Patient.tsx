@@ -29,7 +29,7 @@ function Patient(props:any) {
 
     var Component = (<div className="deliveryHead"> {patientData.map(patient => (
       <div className="delivery" key={patient[0]}>
-        <img src={patientImage}/>
+        <img src={patientImage} className="image"/>
         <ul>id: {patient[0]}</ul>
         <ul>name: {patient[1]}</ul>
         <ul>age: {patient[2]}</ul>
