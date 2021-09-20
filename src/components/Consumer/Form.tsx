@@ -1,6 +1,6 @@
 import React, { useState, useRef, forwardRef, useEffect, createElement } from 'react';
 
-const LoginForm = forwardRef((props, ref: any) => {
+const LoginForm = forwardRef((props:any, ref:any) => {
   const host = process.env.REACT_APP_HOST
 
     const [username, setUsername] = useState('')
@@ -25,7 +25,7 @@ const LoginForm = forwardRef((props, ref: any) => {
     //   ref.current.focus()
     // }, [])
     
-    return <> Create a new Consumer
+    return (<> {props.text}
       <br/>
       <br/>
       <input type="text" value={username} placeholder="Username" onChange={(e) => {
@@ -35,7 +35,7 @@ const LoginForm = forwardRef((props, ref: any) => {
         setPassword(e.target.value)
       }} />
 
-<input type="checkbox" value="device" id="device"
+            <input type="checkbox" value="device" id="device"
               onChange={handleChange} name="device" />
             <label htmlFor="device">device</label>
 
@@ -49,8 +49,8 @@ const LoginForm = forwardRef((props, ref: any) => {
               onChange={handleChange} name="practitioner"/>
             <label htmlFor="practitioner">practitioner</label>
 
-      <button onClick={() => {post()}}>Submit</button>
-    </>
+            <button onClick={() => {post()}}>Submit</button>
+    </>)
   })
 
   export default LoginForm

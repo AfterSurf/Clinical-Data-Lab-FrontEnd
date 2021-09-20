@@ -22,7 +22,6 @@ function Device(props:any) {
       let json = await response.json();
       var outputArray = [];  
       for (let element in json) {  
-          console.log("element: ",json[element])
           outputArray.push( 
             [json[element]._id,json[element].name,json[element].operatingsystem, [json[element].owner]]
           );  

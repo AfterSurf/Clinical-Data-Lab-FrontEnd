@@ -13,7 +13,7 @@ function NewConsumer() {
     return(
         <div className="newConsumer">
             <h1>new Consumer</h1>
-            <Modal data={""}/>
+            <Modal type={"new"} data={""}/>
         </div>
     )
  }

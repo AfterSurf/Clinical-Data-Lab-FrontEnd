@@ -3,8 +3,13 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal';
 import getPermissionsDisplay from "../hooks/getPermissions"
+
+// new consumer
 import plusImage from "../icons/plus.svg";
 import Form from '../components/Consumer/Form';
+
+// edit consumer
+import editImage from "../icons/edit.svg";
 
 function ModalInFunctionalComponent(props: any){
 
@@ -36,16 +41,38 @@ function ModalInFunctionalComponent(props: any){
     // console.log("permissions[2]", permissions[2])
 
     const show = permissions.map((element:string) => {<li>{element}</li>})
-    return(
-        <>
-            <img onClick={setModalIsOpenToTrue} src={plusImage}/>
-            <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
-            <button onClick={setModalIsOpenToFalse}>x</button>
-            <Form/>
-                
-            </Modal>
-        </>
-    )
+
+    if(props.type === "new") {
+        return(
+            <>
+                <img onClick={setModalIsOpenToTrue} src={plusImage}/>
+                <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
+                <button onClick={setModalIsOpenToFalse}>x</button>
+                <Form text="create a new consumer"/>
+                    
+                </Modal>
+            </>
+        )
+    } 
+
+
+    if(props.type === "edit") {
+        return(
+            <>
+                <img className="image" onClick={setModalIsOpenToTrue} src={editImage}/>
+                <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
+                <button onClick={setModalIsOpenToFalse}>x</button>
+                <Form text="edit your consumer"/>
+                    
+                </Modal>
+            </>
+        )
+    } 
+    else {
+        return <></>
+    }
+
+
 }
 
 export default ModalInFunctionalComponent

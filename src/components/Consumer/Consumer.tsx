@@ -8,6 +8,7 @@ import Modal from '../Modal';
 import { getPermissions} from "../../hooks/getPermissions"
 import {AccessContextConsumer} from "../../context/accesContext"
 import NewConsumer from './newConsumer'
+import editImage from "../../icons/edit.svg";
 require('dotenv').config();  
 
 
@@ -40,11 +41,11 @@ function Consumer() {
         {(context: any) => ( 
           <div className="consumerHead" > {consumerData.map(station => (
             <div className="consumer" key={station[0]}>
+              <Modal type={"edit"} data={""}/>
               <ul>id: {station[0]}</ul>
               <ul>name: {station[1]}</ul>
               <ul>apiKey: {station[2]}</ul>
               <ul>permissions: {station[3]}</ul>
-
               <button onClick={() => context.toggleAccess({access: getPermissions(station[3].toString())})}>
                   useContext
               </button>
