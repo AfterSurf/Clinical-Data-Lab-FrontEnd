@@ -1,4 +1,11 @@
-.image {    
-    height: 10vh;
-    margin-right: 50%;
+.imageEdit {   
+    padding-top: 1.5rem; 
+    height: 5vh;
+    margin-left: 50%;
+}
+
+.imagePlus {   
+    padding: 0 1.5rem; 
+    height: 15vh;
+    /* margin-left: 50%; */
 }

@@ -4,11 +4,11 @@
 import React, { useState } from "react";
 import "./consumer.css";
 import Modal from '../Modal';
+
 // hooks
 import { getPermissions} from "../../hooks/getPermissions"
 import {AccessContextConsumer} from "../../context/accesContext"
 import NewConsumer from './newConsumer'
-import editImage from "../../icons/edit.svg";
 require('dotenv').config();  
 
 
@@ -16,6 +16,7 @@ function Consumer() {
     const host = process.env.REACT_APP_HOST
 
     const [consumerData, setConsumerData] = useState([[""]]);
+    const [isActive, setActive] = useState(false);
 
     const getConsumerData = async(e:any) => {
         const requestOptionsGet = {
@@ -40,19 +41,21 @@ function Consumer() {
         <AccessContextConsumer>
         {(context: any) => ( 
           <div className="consumerHead" > {consumerData.map(station => (
-            <div className="consumer" key={station[0]}>
+
+            <div className={"consumer"} key={station[0]} onClick={() =>{
+              context.toggleAccess({access: getPermissions(station[3].toString())})}
+            }>
               <Modal type={"edit"} data={""}/>
               <ul>id: {station[0]}</ul>
               <ul>name: {station[1]}</ul>
               <ul>apiKey: {station[2]}</ul>
-              <ul>permissions: {station[3]}</ul>
-              <button onClick={() => context.toggleAccess({access: getPermissions(station[3].toString())})}>
-                  useContext
-              </button>
+              <ul>permissions: {(station[3])}</ul>
             </div>
+
           ))} 
             <NewConsumer/>
           </div>
+
         )}
         </AccessContextConsumer>
       </div>

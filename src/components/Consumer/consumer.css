@@ -1,10 +1,22 @@
-
+.active {
+    border-style: dotted; 
+}
 .consumer {
     background-color: red;
     margin: 2rem;
     min-width: 18rem;
     width: 30%;
     border-radius: 18%;
+    /* border-style: dotted;  */
+}
+
+.activeConsumer {
+    background-color: red;
+    margin: 2rem;
+    min-width: 18rem;
+    width: 30%;
+    border-radius: 18%;
+    border-style: dotted; 
 }
 
 .newConsumer {
@@ -32,6 +44,7 @@
 .consumerButton {
     margin-left: 15%;
 }
+
 
 
 
