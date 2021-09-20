@@ -34,8 +34,8 @@ function Practitioner(props:any) {
         <img src={practitionerImage} className="image"/>
         <ul>id: {practitioner[0]}</ul>
         <ul>name: {practitioner[1]}</ul>
-        <ul>age: {practitioner[2]}</ul>
-        <ul>sex: {practitioner[3]}</ul>
+        <ul>profession: {practitioner[2]}</ul>
+        <ul>area of expertise: {practitioner[3]}</ul>
       </div>
       ))} 
     </div> )
