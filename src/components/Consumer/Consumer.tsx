@@ -7,6 +7,7 @@ import Modal from '../Modal';
 
 // hooks
 import { getPermissions} from "../../hooks/getPermissions"
+import getPermissionsDisplay from "../../hooks/getPermissions"
 import {AccessContextConsumer} from "../../context/accesContext"
 import NewConsumer from './newConsumer'
 require('dotenv').config();  
@@ -49,7 +50,7 @@ function Consumer() {
               <ul>id: {station[0]}</ul>
               <ul>name: {station[1]}</ul>
               <ul>apiKey: {station[2]}</ul>
-              <ul>permissions: {(station[3])}</ul>
+              <ul>permissions: {station[3] ? getPermissions(station[3].toString()).join(" "): ""}</ul>
             </div>
 
           ))} 
