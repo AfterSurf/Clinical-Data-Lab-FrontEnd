@@ -44,7 +44,7 @@ function Consumer() {
             <div className={"consumer"} key={station[0]} onClick={() =>{
               context.toggleAccess({access: getPermissions(station[3].toString())})}
             }>
-              <Modal type={"edit"} data={""}/>
+              <Modal  type={"edit"} data={station[0]}/>
               <ul>id: {station[0]}</ul>
               <ul>name: {station[1]}</ul>
               <ul>apiKey: {station[2]}</ul>

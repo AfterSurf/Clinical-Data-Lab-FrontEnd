@@ -1,6 +1,6 @@
 import { useState, forwardRef } from 'react';
 
-const LoginForm = forwardRef((props:any, ref:any) => {
+const LoginForm = forwardRef((props:any) => {
     const host = process.env.REACT_APP_HOST 
 
 
@@ -23,25 +23,34 @@ let permissions:Array<string> = [];
       if(inputArray[1] === true){permissions.push("observation")}
       if(inputArray[2] === true){permissions.push("patient")}
       if(inputArray[3] === true){permissions.push("practitioner")}
-      console.log("permission: "+ permissions);
       return permissions;
     }
-
 
     const [name, setName] = useState('')
 
     const post = async() => {
         setPermissions(checkedState);
-        const requestOptionsGet = {
+        const requestOptionsPost = {
           method: "POST",
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({name:name,permissions: permissions})
         };
-      // GET request using fetch with async/await
-      const response:any = await fetch(`http://${host}:3003/putConsumer`,requestOptionsGet);
+      const response:any = await fetch(`http://${host}:3003/putConsumer`,requestOptionsPost);
       const json = await response.json();
       console.log(json)
     }
+
+    const edit = async(id:any) => {
+      setPermissions(checkedState);
+      const requestOptionsPost = {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id:id, name:name,permissions: permissions})
+      };
+    const response:any = await fetch(`http://${host}:3003/updateConsumer`,requestOptionsPost);
+    const json = await response.json();
+    console.log(json)
+  }
     
     return (<> {props.text}
       <br/>
@@ -66,7 +75,9 @@ let permissions:Array<string> = [];
               onChange={() => handleOnChange(3)}/>
             <label htmlFor="practitioner">practitioner</label>
 
-            <button onClick={() => ( post())}>getPermissions</button>
+{/* props.data?! */}
+            {props.data ? <button onClick={() => ( edit(props.data))}>edit consumer</button> : <button onClick={() => ( post())}>create new consumer</button>}
+            
     </>)
   })
 

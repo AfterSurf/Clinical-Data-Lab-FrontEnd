@@ -1,5 +1,3 @@
-// https://dev.to/bhuma08/react-using-modal-in-functional-components-3po2
-// optional props
 // https://stackoverflow.com/questions/40209352/how-to-specify-optional-default-props-with-typescript-for-stateless-functiona
 
 
@@ -16,7 +14,7 @@ import editImage from "../icons/edit.svg";
 import trashImage from '../icons/trash.svg';
 
 function ModalInFunctionalComponent(props: any){
-
+    const host = process.env.REACT_APP_HOST 
     const customStyles = {
         content : {
           top                   : '50%',
@@ -39,6 +37,17 @@ function ModalInFunctionalComponent(props: any){
         setModalIsOpen(false)
     }
 
+    const deleteConsumer = async(id:any) => {
+        const requestOptionsPost = {
+          method: "POST",
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({id:id,})
+        };
+      const response:any = await fetch(`http://${host}:3003/deleteConsumer`,requestOptionsPost);
+      const json = await response.json();
+      console.log(json)
+    }
+
     if(props.type === "new") {
         return(
             <>
@@ -57,11 +66,11 @@ function ModalInFunctionalComponent(props: any){
             <>
                 <div className="images">
                     <img className="imageEdit" onClick={setModalIsOpenToTrue} src={editImage}/>
-                    <img className="imageTrash" onClick={() => console.log("TRASH")} src={trashImage}/>
+                    <img className="imageTrash" onClick={() => deleteConsumer(props.data)} src={trashImage}/>
                 </div>
-                <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
+                <Modal isOpen={modalIsOpen} style={customStyles} id={props.data} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
                 <button onClick={setModalIsOpenToFalse}>x</button>
-                <Form text="edit your consumer"/>
+                <Form data={props.data} text="edit your consumer"/>
                 </Modal>
             </>
         )
