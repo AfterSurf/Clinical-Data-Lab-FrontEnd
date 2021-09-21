@@ -5,9 +5,7 @@ import React, { useState } from "react";
 import "./consumer.css";
 import Modal from '../Modal';
 
-// hooks
 import { getPermissions} from "../../hooks/getPermissions"
-import getPermissionsDisplay from "../../hooks/getPermissions"
 import {AccessContextConsumer} from "../../context/accesContext"
 import NewConsumer from './newConsumer'
 require('dotenv').config();  

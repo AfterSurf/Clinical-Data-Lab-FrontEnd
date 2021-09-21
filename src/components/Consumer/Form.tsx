@@ -1,13 +1,39 @@
-import React, { useState, useRef, forwardRef, useEffect, createElement } from 'react';
+import { useState, forwardRef } from 'react';
 
 const LoginForm = forwardRef((props:any, ref:any) => {
-  const host = process.env.REACT_APP_HOST
+    const host = process.env.REACT_APP_HOST 
+
+
+    // checkboxes
+    const [checkedState, setCheckedState] = useState(
+      new Array(4).fill(false)
+  );
+
+  const handleOnChange = (position:number) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updatedCheckedState);
+  }
+
+// generate permissionArray: 
+let permissions:Array<string> = [];
+    
+    let setPermissions = (inputArray: Array<boolean>) => {
+      if(inputArray[0] === true){permissions.push("device")}
+      if(inputArray[1] === true){permissions.push("observation")}
+      if(inputArray[2] === true){permissions.push("patient")}
+      if(inputArray[3] === true){permissions.push("practitioner")}
+      console.log("permission: "+ permissions);
+      return permissions;
+    }
+
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [app, setApp] = useState(null)
 
-    const handleChange = (e:any) => { setApp(e.target.value)} 
+    const handleChange = (e:any) => {setApp(e.target.value)} 
     const post = async() => {
 
         const requestOptionsGet = {
@@ -21,9 +47,6 @@ const LoginForm = forwardRef((props:any, ref:any) => {
         console.log(json)
 
     }
-    // useEffect(() => {
-    //   ref.current.focus()
-    // }, [])
     
     return (<> {props.text}
       <br/>
@@ -35,21 +58,24 @@ const LoginForm = forwardRef((props:any, ref:any) => {
         setPassword(e.target.value)
       }} />
 
-            <input type="checkbox" value="device" id="device"
-              onChange={handleChange} name="device" />
+<input type="checkbox" id={`custom-checkbox-0`} name={"device"} value={"device"} checked={checkedState[0]}
+              onChange={() => handleOnChange(0)}/>
             <label htmlFor="device">device</label>
 
-            <input type="checkbox" value="observation" id="observation"
-              onChange={handleChange} name="observation"/>
+            <input type="checkbox" id={`custom-checkbox-1`} name={"observation"} value={"observation"} checked={checkedState[1]}
+              onChange={() => handleOnChange(1)}/>
               <label htmlFor="observation">observation</label>
-            <input type="checkbox" value="patient" id="patient"
-              onChange={handleChange} name="patient"/>
+
+              <input type="checkbox" id={`custom-checkbox-2`} name={"patient"} value={"patient"} checked={checkedState[2]}
+              onChange={() => handleOnChange(2)}/>
             <label htmlFor="patient">patient</label>
-            <input type="checkbox" value="practitioner" id="practitioner"
-              onChange={handleChange} name="practitioner"/>
+
+            <input type="checkbox" id={`custom-checkbox-3`} name={"practitioner"} value={"practitioner"} checked={checkedState[3]}
+              onChange={() => handleOnChange(3)}/>
             <label htmlFor="practitioner">practitioner</label>
 
-            <button onClick={() => {post()}}>Submit</button>
+            {/* <button onClick={() => {post()}}>Submit</button> */}
+            <button onClick={() => console.log(setPermissions(checkedState))}>getPermissions</button>
     </>)
   })
 

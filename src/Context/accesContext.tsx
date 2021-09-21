@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 export const initialAccessState:IAccessState = {
-    access: ['Heimmannschaft',"test"],
+    access: [""]
 }
 
 export interface IAccessState {
