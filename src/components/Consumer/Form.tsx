@@ -18,7 +18,6 @@ const LoginForm = forwardRef((props:any, ref:any) => {
 
 // generate permissionArray: 
 let permissions:Array<string> = [];
-    
     let setPermissions = (inputArray: Array<boolean>) => {
       if(inputArray[0] === true){permissions.push("device")}
       if(inputArray[1] === true){permissions.push("observation")}
@@ -29,36 +28,29 @@ let permissions:Array<string> = [];
     }
 
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [app, setApp] = useState(null)
+    const [name, setName] = useState('')
 
-    const handleChange = (e:any) => {setApp(e.target.value)} 
     const post = async() => {
-
+        setPermissions(checkedState);
         const requestOptionsGet = {
           method: "POST",
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({name: username, description:password})
+          body: JSON.stringify({name:name,permissions: permissions})
         };
       // GET request using fetch with async/await
       const response:any = await fetch(`http://${host}:3003/putConsumer`,requestOptionsGet);
       const json = await response.json();
-        console.log(json)
-
+      console.log(json)
     }
     
     return (<> {props.text}
       <br/>
       <br/>
-      <input type="text" value={username} placeholder="Username" onChange={(e) => {
-        setUsername(e.target.value)
-      }} />
-      <input type="password" value={password} placeholder="Password" onChange={(e) => {
-        setPassword(e.target.value)
+      <input type="text" value={name} placeholder="Username" onChange={(e) => {
+        setName(e.target.value)
       }} />
 
-<input type="checkbox" id={`custom-checkbox-0`} name={"device"} value={"device"} checked={checkedState[0]}
+            <input type="checkbox" id={`custom-checkbox-0`} name={"device"} value={"device"} checked={checkedState[0]}
               onChange={() => handleOnChange(0)}/>
             <label htmlFor="device">device</label>
 
@@ -74,8 +66,7 @@ let permissions:Array<string> = [];
               onChange={() => handleOnChange(3)}/>
             <label htmlFor="practitioner">practitioner</label>
 
-            {/* <button onClick={() => {post()}}>Submit</button> */}
-            <button onClick={() => console.log(setPermissions(checkedState))}>getPermissions</button>
+            <button onClick={() => ( post())}>getPermissions</button>
     </>)
   })
 
