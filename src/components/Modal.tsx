@@ -1,16 +1,19 @@
 // https://dev.to/bhuma08/react-using-modal-in-functional-components-3po2
+// optional props
+// https://stackoverflow.com/questions/40209352/how-to-specify-optional-default-props-with-typescript-for-stateless-functiona
+
 
 import React, {useState} from 'react';
 import Modal from 'react-modal';
-import getPermissions from "../hooks/getPermissions"
 import './modal.css'
 
 // new consumer
 import plusImage from "../icons/plus.svg";
 import Form from '../components/Consumer/Form';
 
-// edit consumer
+// edit/delete consumer
 import editImage from "../icons/edit.svg";
+import trashImage from '../icons/trash.svg';
 
 function ModalInFunctionalComponent(props: any){
 
@@ -52,11 +55,13 @@ function ModalInFunctionalComponent(props: any){
     if(props.type === "edit") {
         return(
             <>
-                <img className="imageEdit" onClick={setModalIsOpenToTrue} src={editImage}/>
+                <div className="images">
+                    <img className="imageEdit" onClick={setModalIsOpenToTrue} src={editImage}/>
+                    <img className="imageTrash" onClick={() => console.log("TRASH")} src={trashImage}/>
+                </div>
                 <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)} ariaHideApp={false}>
                 <button onClick={setModalIsOpenToFalse}>x</button>
                 <Form text="edit your consumer"/>
-                    
                 </Modal>
             </>
         )

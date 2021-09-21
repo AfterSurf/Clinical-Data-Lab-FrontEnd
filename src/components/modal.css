@@ -1,11 +1,22 @@
 .imageEdit {   
     padding-top: 1.5rem; 
     height: 5vh;
-    margin-left: 50%;
+}
+
+.images {
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
 .imagePlus {   
     padding: 0 1.5rem; 
     height: 15vh;
     /* margin-left: 50%; */
+}
+
+.imageTrash {   
+    padding-top: 1.3rem; 
+    padding-right: 1rem;
+    height: 5.5vh;
 }
