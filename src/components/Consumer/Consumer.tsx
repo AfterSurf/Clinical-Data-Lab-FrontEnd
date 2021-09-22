@@ -3,7 +3,8 @@ import "./consumer.css";
 import Modal from '../Modal';
 
 import { getPermissions} from "../../hooks/getPermissions"
-import {AccessContextConsumer} from "../../context/accesContext"
+// import {AccessContextConsumer} from "../../context/accesContext"
+import {AccessContextConsumer} from "../../Context/accesContext"
 import NewConsumer from './newConsumer'
 require('dotenv').config();  
 

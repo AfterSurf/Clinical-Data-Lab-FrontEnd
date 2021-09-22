@@ -5,7 +5,7 @@ import Observation from "./Delivery/Observation";
 import Patient from "./Delivery/Patient";
 import Practitioner from "./Delivery/Practitioner";
 
-import {AccessContextConsumer, IAccessContextProps} from "../context/accesContext"
+import {AccessContextConsumer, IAccessContextProps} from "../Context/accesContext"
 
 import "./choice.css"
 

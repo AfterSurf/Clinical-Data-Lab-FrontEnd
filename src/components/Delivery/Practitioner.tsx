@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext";
+import {AccessContextConsumer, IAccessContextProps} from "../../Context/accesContext";
 import practitionerImage from "../../icons/practitioner.svg";
 import './delivery.css'
 require('dotenv').config()  

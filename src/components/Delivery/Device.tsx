@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
+import {AccessContextConsumer, IAccessContextProps} from "../../Context/accesContext"
 import './delivery.css'
 
 import deviceImage from "../../icons/device.svg";

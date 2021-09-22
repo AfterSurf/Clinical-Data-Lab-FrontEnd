@@ -1,6 +1,6 @@
 import Consumer from './components/Consumer/Consumer';
 import Choice from "./components/choice";
-import {AccessContextProvider} from './context/accesContext'
+import {AccessContextProvider} from './Context/accesContext'
 import './App.css'
 require('dotenv').config();
 
