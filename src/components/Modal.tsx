@@ -1,6 +1,5 @@
 // https://stackoverflow.com/questions/40209352/how-to-specify-optional-default-props-with-typescript-for-stateless-functiona
 
-
 import React, {useState} from 'react';
 import Modal from 'react-modal';
 import './modal.css'
@@ -60,7 +59,6 @@ function ModalInFunctionalComponent(props: any){
         )
     } 
 
-
     if(props.type === "edit") {
         return(
             <>
@@ -78,7 +76,6 @@ function ModalInFunctionalComponent(props: any){
     else {
         return <></>
     }
-
 
 }
 

@@ -3,7 +3,6 @@ import { useState, forwardRef } from 'react';
 const LoginForm = forwardRef((props:any) => {
     const host = process.env.REACT_APP_HOST 
 
-
     // checkboxes
     const [checkedState, setCheckedState] = useState(
       new Array(4).fill(false)
@@ -48,8 +47,6 @@ let permissions:Array<string> = [];
         body: JSON.stringify({id:id, name:name,permissions: permissions})
       };
     const response:any = await fetch(`http://${host}:3003/updateConsumer`,requestOptionsPost);
-    const json = await response.json();
-    console.log(json)
   }
     
     return (<> {props.text}
@@ -74,10 +71,7 @@ let permissions:Array<string> = [];
             <input type="checkbox" id={`custom-checkbox-3`} name={"practitioner"} value={"practitioner"} checked={checkedState[3]}
               onChange={() => handleOnChange(3)}/>
             <label htmlFor="practitioner">practitioner</label>
-
-{/* props.data?! */}
             {props.data ? <button onClick={() => ( edit(props.data))}>edit consumer</button> : <button onClick={() => ( post())}>create new consumer</button>}
-            
     </>)
   })
 

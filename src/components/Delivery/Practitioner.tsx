@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext";
 import practitionerImage from "../../icons/practitioner.svg";
 import './delivery.css'
@@ -14,7 +14,6 @@ function Practitioner(props:any) {
         const requestOptionsGet = {
           method: "GET"
         };
-      // GET request using fetch with async/await
       const response:any = await fetch(`http://${host}:3003/getPractitioner`,requestOptionsGet);
       const json = await response.json();
 

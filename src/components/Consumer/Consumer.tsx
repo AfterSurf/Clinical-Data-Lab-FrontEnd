@@ -1,7 +1,4 @@
-// https://css-tricks.com/considerations-styling-modal/
-
-
-import React, { useState } from "react";
+import { useState } from "react";
 import "./consumer.css";
 import Modal from '../Modal';
 
@@ -15,13 +12,12 @@ function Consumer() {
     const host = process.env.REACT_APP_HOST
 
     const [consumerData, setConsumerData] = useState([[""]]);
-    const [isActive, setActive] = useState(false);
 
     const getConsumerData = async(e:any) => {
         const requestOptionsGet = {
           method: "GET"
         };
-      // GET request using fetch with async/await
+
       const response:any = await fetch(`http://${host}:3003/getConsumer`,requestOptionsGet);
       const json = await response.json();
 
@@ -40,7 +36,6 @@ function Consumer() {
         <AccessContextConsumer>
         {(context: any) => ( 
           <div className="consumerHead" > {consumerData.map(station => (
-
             <div className={"consumer"} key={station[0]} onClick={() =>{
               context.toggleAccess({access: getPermissions(station[3].toString())})}
             }>
@@ -69,7 +64,6 @@ function Consumer() {
             </button>
         </div>
     )
-
 }
 
 export default () => ( <Consumer /> );

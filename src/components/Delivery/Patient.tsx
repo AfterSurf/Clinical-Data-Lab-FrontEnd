@@ -13,7 +13,6 @@ function Patient(props:any) {
         const requestOptionsGet = {
           method: "GET"
         };
-        // GET request using fetch with async/await
         const response:any = await fetch(`http://${host}:3003/getPatient`,requestOptionsGet);
         const json = await response.json();
 
@@ -23,7 +22,6 @@ function Patient(props:any) {
               [json[element]._id,json[element].name,json[element].age, json[element].sex]
             );  
         }
-
         setPatientData(outputArray);
     }
 
@@ -53,6 +51,5 @@ function Patient(props:any) {
     )
 
 }
-
 
 export default Patient;

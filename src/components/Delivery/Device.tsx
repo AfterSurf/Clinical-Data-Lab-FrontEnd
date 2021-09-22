@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {AccessContextConsumer, IAccessContextProps} from "../../context/accesContext"
 import './delivery.css'
 
 import deviceImage from "../../icons/device.svg";
-
 require('dotenv').config();
-
-
 
 function Device(props:any) {
     const host = process.env.REACT_APP_HOST;  
@@ -14,10 +11,9 @@ function Device(props:any) {
     const [deviceData, setDeviceData] = useState([[""]]);
 
     const getDeviceData = async(e:any) => {
-        const requestOptionsGet = {
-          method: "GET"
-        };
-      // GET request using fetch with async/await
+      const requestOptionsGet = {
+        method: "GET"
+      };
       const response:any = await fetch(`http://${host}:3003/getDevice`,requestOptionsGet);
       let json = await response.json();
       var outputArray = [];  
@@ -30,8 +26,6 @@ function Device(props:any) {
     }
 
     var Component = (
-
-          // <div onClick={() => {console.log("device: ",context.accessState.toString())}}>
             <div className="deliveryHead"> {deviceData.map(device => (
               <div className="delivery" key={device[0]}>
                 <img src={deviceImage} className="image"/>
@@ -40,10 +34,8 @@ function Device(props:any) {
                 <ul>operatingsystem: {device[2]}</ul>
                 <ul>owner: {device[3]}</ul>
               </div>
-
                     ))}
             </div> 
-          // </div> 
         )
 
     return (
@@ -51,10 +43,6 @@ function Device(props:any) {
         {(context: IAccessContextProps) => ( 
           <div>
             <h1 onClick={() => props.action("choice")}>Device</h1>
-
-
-
-
             <p>{Component}</p>
             <button disabled={!context.accessState.access.includes("device")} type="submit" onClick={getDeviceData}>
                 getData
@@ -65,7 +53,5 @@ function Device(props:any) {
       </AccessContextConsumer>
     )
 }
-
-
 
 export default Device

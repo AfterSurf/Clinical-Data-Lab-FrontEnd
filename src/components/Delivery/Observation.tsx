@@ -6,10 +6,9 @@ require('dotenv').config();
 
 
 export default function Observation(props:any) {
-  const host = process.env.REACT_APP_HOST;
+    const host = process.env.REACT_APP_HOST;
 
     const [observationData, setObservationData] = useState([[""]]);
-
     const getObservationDataData = async(e:any) => {
         const requestOptionsGet = {
           method: "GET"

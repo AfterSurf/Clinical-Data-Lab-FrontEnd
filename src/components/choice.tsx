@@ -1,5 +1,3 @@
-// https://flaviocopes.com/react-show-different-component-on-click/
-
 import React, { useState } from "react";
 
 import Device from "./Delivery/Device";
@@ -42,9 +40,3 @@ function Choice() {
 }
 
 export default Choice;
-/*
-const device = (<h1 onClick={()=>{trigger("choice")}}>device</h1>)
-const observation = (<h1 onClick={()=>{trigger("choice")}}>observation</h1>)
-const patient = (<h1 onClick={()=>{trigger("choice")}}>patient</h1>)
-const practitioner = (<h1 onClick={()=>{trigger("choice")}}>practitioner</h1>)
-*/
